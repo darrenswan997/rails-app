@@ -1,0 +1,21 @@
+<div class="Container">
+    <div class="jumbotron">
+        <h1 Class="display-4">Welcome to my news app</h1>
+        <h2 class="display-4">Please sign in below or continue to our articles</h2>
+    </div>
+<% if current_user %>
+<%= link_to "Sign out", destroy_user_session_path, class:"btn btn-primary", method: :delete %>
+
+
+<% else %>
+<%= link_to 'Sign in', new_user_session_path, class:"btn btn-primary" %>
+<%= link_to 'Sign up', new_user_registration_path, class:"btn btn-primary" %>
+
+<% end %>
+
+<%= link_to 'Articles', links_path, class:"btn btn-primary" %>
+
+    </div>
+</div>
+
+

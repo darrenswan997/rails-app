@@ -1,0 +1,10 @@
+<h1>Editing Link</h1>
+<% if user_signed_in? %>
+  <% if @link.user.id == current_user.id %>
+    <%= render 'form', link: @link %>
+    <% end %>
+    <% else %>
+    <h1>you can't edit other peoples posts</h1>
+    <% end %>
+<%= link_to 'Show', @link %> 
+<%= link_to 'Back', links_path %>
