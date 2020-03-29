@@ -8,7 +8,6 @@
         <%= link_to @link.title, root_path %>
       </h1>
 
-
       <p class="lead">
       <%-#found @ https://devhints.io/strftime-%>
         <%= @link.updated_at.strftime("%A, %B %e, %Y") %> by <%= @link.user.username %> | <%= pluralize(@link.views, "View") %>
@@ -19,4 +18,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+<h2> <%= @link.comments.count %> Comments</h2>
+<br>
+<%= render @link.comments%>
+<h3>Add a comment</h3>
+<%= render "comments/form" %>
+<br>
 </div>

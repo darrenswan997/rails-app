@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :links, class_name: "link", foreign_key: "reference_id"
+  has_many :comments
          #gives username to user on posts
          def username
            return self.email.split('@')[0].capitalize

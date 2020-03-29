@@ -1,0 +1,14 @@
+<div class="row d-flex justify-content-center">
+<%= form_for([@link,@link.comments.build]) do |f|%>
+    <p>
+        
+        <%= f.text_area :body %>
+    </p>
+    <br>
+    <P>
+        <%= f.submit class:"btn btn-primary"%>
+    </p>
+    <%end%>
+    </div>
+
+    

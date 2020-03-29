@@ -19,9 +19,7 @@
           <h5 class="card-title"><% x['title'] %></h5>
           <p class="card-text"> <%= x['description'] %></p>
         </div>
-        <% if current_user %>
-          <i data-article-key="<%= article_key %>"  class="far fa-bookmark bookmark" data-toggle="modal" data-target="#create-bookmark"></i>
-        <% end %>
+        
       </div>
     <% end %>
   </div>  

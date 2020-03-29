@@ -7,15 +7,20 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-     @links = Link.all.order("created_at DESC").paginate(page: params[:page])
     
+
+     @links = Link.all.order("created_at DESC").paginate(page: params[:page])
+     if params[:search]
+      @search_term = params[:search]
+      @links = @links.search_by(@search_term)
+    end
     # placeholder for images that do not exist
     @image_placeholder = 'https://placehold.it/50x50'
     @articles ||= []
 
   end
 
-  def article
+  def articles
     require 'news-api'
 
     newsapi = News.new("c0609dca0c634fcc91e201434ce569e1")             
@@ -29,7 +34,7 @@ top_headlines = newsapi.get_top_headlines(q: 'corona',
 all_articles = newsapi.get_everything(q: 'news',
                                       sources: 'bbc-news,the-verge',
                                       domains: 'bbc.co.uk,techcrunch.com',
-                                      from: '2020-03-20',
+                                      from: '2020-03-28',
                                       language: 'en',
                                       sortBy: 'relevancy',
                                       page: 2)
@@ -42,10 +47,14 @@ sources = newsapi.get_sources(country: 'ie', language: 'en')
   # GET /links/1
   # GET /links/1.json
   def show
+    @comment = Comment.new
+    @comments = @link.comments
+    
+
     @link.views ||= 0
     @link.update(views: @link.views + 1)
-    #return  @links = Link.where("title LIKE ?", "%" + params[:q] + "%")
     
+   
     @image_placeholder = 'https://placehold.it/50x50'
   query = params[:q]
   @articles = fetch_news_query query unless !query
@@ -56,6 +65,24 @@ sources = newsapi.get_sources(country: 'ie', language: 'en')
   def new
     @link = Link.new
   end
+
+  def news
+    @image_placeholder = 'https://placehold.it/50x50'
+    query = params[:q]
+    @articles = fetch_news_query query unless !query
+    @articles ||= [] # empty array if no query
+
+    newsapi = News.new("c0609dca0c634fcc91e201434ce569e1")             
+
+    # /v2/top-headlines
+    top_headlines = newsapi.get_top_headlines(q: 'news',
+                                              language: 'en',
+                                              country: 'ie')
+    
+   
+
+  end
+
 
   def search
     # Get /links/search
@@ -124,7 +151,7 @@ end
     end
 
      def fetch_news_query query
-       url = "https://newsapi.org/v2/everything?q=#{query}&apiKey=#{ENV['c0609dca0c634fcc91e201434ce569e1']}&language=en"
+       url = "https://newsapi.org/v2/top-headlines?country=ie&apiKey=c0609dca0c634fcc91e201434ce569e1"
        response = HTTParty.get url
        response.parsed_response['articles'] unless response.code != 200
      end

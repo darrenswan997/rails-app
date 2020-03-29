@@ -4,23 +4,13 @@
       <%= will_paginate @links, :container => false %>
     </div>
   </div>
-
-  <%=require 'open-uri'
-  @top_headlines
-url = 'http://newsapi.org/v2/top-headlines?'\
-      'country=ie&'\
-      'apiKey=c0609dca0c634fcc91e201434ce569e1'
-req = open(url)
-response_body = req.read
-puts response_body%>
-
-<%if current_user%>
-    <form class="form-inline my-2 my-lg-0" action="/search">
-      <input class="form-control mr-sm-2" name="q" id="searchQuery" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <%end%>
-    <br>
+<h1>Welcome to our user blog page, here you can make your own posts and discuss on current news</h1>
+<h2><strong>Refine your search:</strong></h2><br>
+<%= form_for "",url: links_path, role: "search", method: :get do %>
+<%= text_field_tag :search, @search_term, placeholder: "Search..."%><br></n>
+<%end%>
+<br>
+<br>
 
   <% @links.each do |link| %>
     <div class="row">
@@ -36,7 +26,7 @@ puts response_body%>
           <p class="card-text">
             <small class="text-muted">
               <%= link.updated_at.strftime("%A, %B %e, %Y") %> by
-              <%= link.user.username %> | <%= pluralize(link.views, "View") %> | 0 comments
+              <%= link.user.username %> | <%= pluralize(link.views, "View") %>  
             </small>
           </p>
           <td><%= link_to 'Edit', edit_link_path(link) %></td>
@@ -47,7 +37,9 @@ puts response_body%>
   <% end %>
   </div>
   <div>
-  <%= render 'articles'%>
+  <br>
+  <%= render 'articles' %>
   <footer id="news-api" class="text-center footer">
       <p>Powered by <a href="https://newsapi.org/">News Api</a></p>
-    </footer>
+    </footer> 
+</div>

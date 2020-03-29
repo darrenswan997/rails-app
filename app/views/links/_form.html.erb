@@ -1,15 +1,17 @@
 <%= form_with model: link do |f| %>
   
   <div class="form-inputs">
-    <%= f.text_field :title, class:'form-control string' %>
-    <%= f.text_field :url, class:'form-control string' %>
-    <%= f.label :thumbnail, class:'form-control' %>
-    <%= f.file_field :thumbnail %>
+    <%= f.text_field :title, class:'form-control string', placeholder: "Article title" %>
+    <br>
+    <%= f.text_field :url, class:'form-control string', placeholder: "Link to website" %>
+    <br>
     <%= f.label :banner, class:'form-control' %>
-    <%= f.file_field :banner %>
-    <%= f.rich_text_area :body %>
+    
+    <%= f.file_field :banner, class:'form-control'%>
+    <br>
+    <%= f.rich_text_area :body, class:'form-control', placeholder: "Body of the article"%>
   </div>
-
+<br>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
