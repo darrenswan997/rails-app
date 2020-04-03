@@ -8,7 +8,7 @@ gem 'simple_form'
 gem 'will_paginate'
 gem 'news-api'
 gem 'httparty'
-gem 'executables'
+gem 'activerecord-session_store'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use sqlite3 as the database for Active Record

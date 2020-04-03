@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :fetch_news, only: [:index]
+  before_action :fetch_news, only: [:news]
   require 'news-api'
   require 'open-uri'
   # GET /links
@@ -21,7 +21,7 @@ class LinksController < ApplicationController
   end
 
   def articles
-    require 'news-api'
+    
 
     newsapi = News.new("c0609dca0c634fcc91e201434ce569e1")             
 
