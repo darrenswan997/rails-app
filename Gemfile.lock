@@ -88,7 +88,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.9.0)
-    executables (0.1.0)
     ffi (1.12.2)
     ffi (1.12.2-x64-mingw32)
     globalid (0.4.2)
@@ -138,7 +137,7 @@ GEM
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -255,7 +254,6 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (~> 4.2)
-  executables
   httparty
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
