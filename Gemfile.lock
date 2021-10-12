@@ -88,7 +88,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.9.0)
-    executables (0.1.0)
     ffi (1.12.2)
     ffi (1.12.2-x64-mingw32)
     globalid (0.4.2)
@@ -127,7 +126,7 @@ GEM
     multi_json (1.14.1)
     multi_xml (0.6.0)
     news-api (0.2.0)
-    nio4r (2.5.2)
+    nio4r (2.5.8)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.9-x64-mingw32)
@@ -136,7 +135,7 @@ GEM
     pg (1.2.3)
     pg (1.2.3-x64-mingw32)
     public_suffix (4.0.3)
-    puma (4.3.3)
+    puma (4.3.9)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -255,14 +254,13 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (~> 4.2)
-  executables
   httparty
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen
   news-api
   pg
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.1)
   rails_12factor
   sass-rails (>= 6)
